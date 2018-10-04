@@ -7,3 +7,9 @@ java.lang.Exception: Validator.INVALID_USERNAME
 java.lang.Exception: Validator.INVALID_USERNAME
 java.lang.Exception: Validator.INVALID_USERNAME
 java.lang.Exception: Service.TECHNICAL_ERROR
+java.lang.Exception: Manager.USER_NOT_FOUND
+java.lang.Exception: Manager.USERNAME_PASSWORD_MISMATCH
+java.lang.Exception: Manager.USERNAME_PASSWORD_MISMATCH
+java.lang.Exception: Manager.USERNAME_PASSWORD_MISMATCH
+java.lang.Exception: Manager.USERNAME_PASSWORD_MISMATCH
+java.lang.Exception: Manager.USERNAME_PASSWORD_MISMATCH

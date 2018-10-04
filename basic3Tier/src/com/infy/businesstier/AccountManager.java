@@ -15,11 +15,11 @@ public class AccountManager {
 		try {
 
 			validator.validate(accountTO.getUserName(), accountTO.getPassword());
-			if (service.getUser(accountTO.getUserName()) == "Not Found") {
+			//System.out.println("Is Found: "+service.getUserByUserName(accountTO.getUserName()));
+			if (!service.isUserNameValid(accountTO.getUserName())) {
 				throw new Exception("Manager.USER_NOT_FOUND");
 			}
-
-			if (!accountTO.getPassword().equals(service.getPasswordList().get(accountTO.getUserName()))) {
+			if (!service.isValidLogin(accountTO.getUserName(),accountTO.getPassword())) {
 
 				throw new Exception("Manager.USERNAME_PASSWORD_MISMATCH");
 			}

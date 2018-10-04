@@ -279,6 +279,7 @@ public class AccountService {
 			while (rs.next()) {
 				int id = rs.getInt("id");
 				userList.add(rs.getString("username"));
+				System.out.println("User: "+rs.getString("username"));
 			}
 			rs.close();
 			stmt.close();
@@ -288,6 +289,58 @@ public class AccountService {
 			System.exit(0);
 		}
 		return userList;
+	}
+	public Boolean isUserNameValid(String username) {
+		Boolean isFound = false;
+		List<String> userList = new ArrayList<String>();
+		Connection c = null;
+		Statement stmt = null;
+		try {
+			Class.forName("org.sqlite.JDBC");
+			c = DriverManager.getConnection(DATABASE_NAME);
+			c.setAutoCommit(false);
+
+			stmt = c.createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT * FROM account_user where username='"+username+"';");
+			while (rs.next()) {
+				int id = rs.getInt("id");
+				userList.add(rs.getString("username"));
+				isFound = true;
+			}
+			rs.close();
+			stmt.close();
+			c.close();
+		} catch (Exception e) {
+			System.err.println(e.getClass().getName() + ": " + e.getMessage());
+			System.exit(0);
+		}
+		return isFound;
+	}
+	public Boolean isValidLogin(String username,String password) {
+		Boolean isFound = false;
+		List<String> userList = new ArrayList<String>();
+		Connection c = null;
+		Statement stmt = null;
+		try {
+			Class.forName("org.sqlite.JDBC");
+			c = DriverManager.getConnection(DATABASE_NAME);
+			c.setAutoCommit(false);
+
+			stmt = c.createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT * FROM account_user where username='"+username+"' AND password='"+password+"';");
+			while (rs.next()) {
+				int id = rs.getInt("id");
+				userList.add(rs.getString("username"));
+				isFound = true;
+			}
+			rs.close();
+			stmt.close();
+			c.close();
+		} catch (Exception e) {
+			System.err.println(e.getClass().getName() + ": " + e.getMessage());
+			System.exit(0);
+		}
+		return isFound;
 	}
 
 }

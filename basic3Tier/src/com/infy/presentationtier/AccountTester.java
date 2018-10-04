@@ -155,8 +155,7 @@ public class AccountTester {
 			// manager = new AccountManager();
 			accountTO = manager.loginUser(accountTO);
 			System.out.println("Welcome to Mr. " + accountTO.getFullName());
-			System.out
-					.println("Your Account Details:\n========================");
+			System.out.println("Your Account Details:\n========================");
 			System.out.println("Username: " + accountTO.getUserName());
 			System.out.println("Password: " + accountTO.getPassword());
 			System.out.println("Total Balance: " + accountTO.getAmount());
