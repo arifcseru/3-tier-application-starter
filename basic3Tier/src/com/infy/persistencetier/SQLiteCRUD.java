@@ -51,24 +51,6 @@ public class SQLiteCRUD {
 					+ " balance        NUMBER     NOT NULL, "
 					+ " createdDate     datetime)";
 			stmt.executeUpdate(sql);
-			sql = "CREATE TABLE IF NOT EXISTS web_blog "
-					+ "(ID INTEGER PRIMARY KEY autoincrement,"
-					+ " NAME           CHAR(50)    NOT NULL, "
-					+ " message        TEXT     NOT NULL, "
-					+ " date_added     datetime)";
-			stmt.executeUpdate(sql);
-			sql = "CREATE TABLE IF NOT EXISTS web_blog "
-					+ "(ID INTEGER PRIMARY KEY autoincrement,"
-					+ " NAME           CHAR(50)    NOT NULL, "
-					+ " message        TEXT     NOT NULL, "
-					+ " date_added     datetime)";
-			stmt.executeUpdate(sql);
-			sql = "CREATE TABLE IF NOT EXISTS web_blog "
-					+ "(ID INTEGER PRIMARY KEY autoincrement,"
-					+ " NAME           CHAR(50)    NOT NULL, "
-					+ " message        TEXT     NOT NULL, "
-					+ " date_added     datetime)";
-			stmt.executeUpdate(sql);
 			stmt.close();
 			c.close();
 		} catch (Exception e) {
