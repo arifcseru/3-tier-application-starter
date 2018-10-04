@@ -14,14 +14,12 @@ public class AccountManager {
 	public AccountTO loginUser(AccountTO accountTO) throws Exception {
 		try {
 
-			validator
-					.validate(accountTO.getUserName(), accountTO.getPassword());
+			validator.validate(accountTO.getUserName(), accountTO.getPassword());
 			if (service.getUser(accountTO.getUserName()) == "Not Found") {
 				throw new Exception("Manager.USER_NOT_FOUND");
 			}
 
-			if (!accountTO.getPassword().equals(
-					service.getPasswordList().get(accountTO.getUserName()))) {
+			if (!accountTO.getPassword().equals(service.getPasswordList().get(accountTO.getUserName()))) {
 
 				throw new Exception("Manager.USERNAME_PASSWORD_MISMATCH");
 			}
@@ -37,8 +35,7 @@ public class AccountManager {
 			throws Exception {
 		try {
 
-			validator
-					.validate(accountTO.getUserName(), accountTO.getPassword());
+			validator.validate(accountTO.getUserName(), accountTO.getPassword());
 			if (service.getUser(accountTO.getUserName()) == "Found") {
 				throw new Exception("Manager.USER_EXISTS");
 			}
