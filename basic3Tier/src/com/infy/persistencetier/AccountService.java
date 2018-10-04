@@ -1,5 +1,9 @@
 package com.infy.persistencetier;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -7,6 +11,7 @@ import java.util.List;
 import com.infy.businesstier.AccountTO;
 
 public class AccountService {
+	public static String DATABASE_NAME = "jdbc:sqlite:myBlog.db";
 	private List<String> userList = new ArrayList<String>();
 	private LinkedHashMap<String, String> passwordList = new LinkedHashMap<String, String>();
 	private LinkedHashMap<String, Double> balanceList = new LinkedHashMap<String, Double>();
@@ -73,6 +78,27 @@ public class AccountService {
 			throw new Exception("Service.TECHNICAL_ERROR");
 		}
 
+	}
+	public LinkedHashMap<String, String> create(AccountTO accountTO) throws Exception{
+		Connection c = null;
+		Statement stmt = null;
+		try {
+			Class.forName("org.sqlite.JDBC");
+			c = DriverManager.getConnection(DATABASE_NAME);
+			c.setAutoCommit(false);
+
+			stmt = c.createStatement();
+			String sql = "INSERT INTO account_user (fullName,username,password,createdDate) "
+					+ "VALUES ('"+accountTO.getFullName()+"','"+accountTO.getUserName()+"', '"+accountTO.getPassword()+"', datetime());";
+			stmt.executeUpdate(sql);
+			stmt.close();
+			c.commit();
+			c.close();
+		} catch (Exception e) {
+			System.err.println(e.getClass().getName() + ": " + e.getMessage());
+			throw new Exception("Service.TECHNICAL_ERROR");
+		}
+		return this.getUsersFullName();
 	}
 
 	public LinkedHashMap<String, String> deleteUser(AccountTO accountTO)
@@ -166,10 +192,33 @@ public class AccountService {
 	public void setBalanceList(LinkedHashMap<String, Double> balanceList) {
 		this.balanceList = balanceList;
 	}
-
 	public LinkedHashMap<String, String> getUsersFullName() {
+		LinkedHashMap<String, String> usersFullName = new LinkedHashMap<String, String>();
+		Connection c = null;
+		Statement stmt = null;
+		try {
+			Class.forName("org.sqlite.JDBC");
+			c = DriverManager.getConnection(DATABASE_NAME);
+			c.setAutoCommit(false);
+
+			stmt = c.createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT * FROM account_user;");
+			while (rs.next()) {
+				int id = rs.getInt("id");
+				usersFullName.put(rs.getString("username"), rs.getString("fullName"));
+			}
+			rs.close();
+			stmt.close();
+			c.close();
+		} catch (Exception e) {
+			System.err.println(e.getClass().getName() + ": " + e.getMessage());
+			System.exit(0);
+		}
 		return usersFullName;
 	}
+	/*public LinkedHashMap<String, String> getUsersFullName() {
+		return usersFullName;
+	}*/
 
 	public void setUserList(List<String> userList) {
 		this.userList = userList;

@@ -49,11 +49,8 @@ public class AccountServiceSQLite {
 	public AccountTO loginUser(AccountTO accountTO) throws Exception {
 		try {
 
-			accountTO.setFullName(this.getUsersFullName().get(
-					accountTO.getUserName()));
-			accountTO.setAmount(this.getBalanceList().get(
-					accountTO.getUserName()));
-
+			accountTO.setFullName(this.getUsersFullName().get(accountTO.getUserName()));
+			accountTO.setAmount(this.getBalanceList().get(accountTO.getUserName()));
 			return accountTO;
 
 		} catch (Exception e) {
@@ -61,7 +58,7 @@ public class AccountServiceSQLite {
 		}
 
 	}
-	public static void insertDB() {
+	public static void create(AccountTO accountTO) {
 		Connection c = null;
 		Statement stmt = null;
 		try {
@@ -71,8 +68,8 @@ public class AccountServiceSQLite {
 			System.out.println("Opened database successfully");
 
 			stmt = c.createStatement();
-			String sql = "INSERT INTO web_blog (NAME,message,date_added) "
-					+ "VALUES ('Ken', 'Hello every one!!!', datetime());";
+			String sql = "INSERT INTO account_user (fullName,username,password,createdDate) "
+					+ "VALUES ('"+accountTO.getFullName()+"',"+accountTO.getUserName()+"', '"+accountTO.getPassword()+"', datetime());";
 			stmt.executeUpdate(sql);
 			stmt.close();
 			c.commit();
@@ -86,12 +83,9 @@ public class AccountServiceSQLite {
 	public LinkedHashMap<String, String> addUser(AccountTO accountTO) throws Exception {
 		try {
 			this.getUserList().add(accountTO.getUserName());
-			this.getUsersFullName().put(accountTO.getUserName(),
-					accountTO.getFullName());
-			this.getBalanceList().put(accountTO.getUserName(),
-					accountTO.getAmount());
-			this.getPasswordList().put(accountTO.getUserName(),
-					accountTO.getPassword());
+			this.getUsersFullName().put(accountTO.getUserName(),accountTO.getFullName());
+			this.getBalanceList().put(accountTO.getUserName(),accountTO.getAmount());
+			this.getPasswordList().put(accountTO.getUserName(),accountTO.getPassword());
 			return this.getUsersFullName();
 		} catch (Exception e) {
 			throw new Exception("Service.TECHNICAL_ERROR");

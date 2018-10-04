@@ -43,11 +43,12 @@ public class SQLiteCRUD {
 					+ " message        TEXT     NOT NULL, "
 					+ " date_added     datetime)";
 			stmt.executeUpdate(sql);
-			sql = "CREATE TABLE IF NOT EXISTS web_blog "
+			sql = "CREATE TABLE IF NOT EXISTS account_user "
 					+ "(ID INTEGER PRIMARY KEY autoincrement,"
-					+ " NAME           CHAR(50)    NOT NULL, "
-					+ " message        TEXT     NOT NULL, "
-					+ " date_added     datetime)";
+					+ " fullName           CHAR(50)    NOT NULL, "
+					+ " username        TEXT     NOT NULL, "
+					+ " password        TEXT     NOT NULL, "
+					+ " createdDate     datetime)";
 			stmt.executeUpdate(sql);
 			sql = "CREATE TABLE IF NOT EXISTS web_blog "
 					+ "(ID INTEGER PRIMARY KEY autoincrement,"

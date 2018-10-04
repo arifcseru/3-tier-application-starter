@@ -31,15 +31,14 @@ public class AccountManager {
 		}
 	}
 
-	public LinkedHashMap<String, String> addUser(AccountTO accountTO)
-			throws Exception {
+	public LinkedHashMap<String, String> create(AccountTO accountTO) throws Exception {
 		try {
 
 			validator.validate(accountTO.getUserName(), accountTO.getPassword());
 			if (service.getUser(accountTO.getUserName()) == "Found") {
 				throw new Exception("Manager.USER_EXISTS");
 			}
-			return service.addUser(accountTO);
+			return service.create(accountTO);
 		} catch (Exception e) {
 			logger.info(e);
 			throw e;

@@ -40,7 +40,7 @@ public class AccountTester {
 					choice = input.nextInt();
 					switch (choice) {
 					case 1:
-						addUser();
+						create();
 
 						break;
 					case 2:
@@ -110,8 +110,7 @@ public class AccountTester {
 			accountTO.setUserName(input.next());
 			// accountTO.setFullName("Rahim Biswas");
 
-			LinkedHashMap<String, String> usersFullNames = manager
-					.deleteUser(accountTO);
+			LinkedHashMap<String, String> usersFullNames = manager.deleteUser(accountTO);
 			System.out.println(usersFullNames.values());
 			// getAllUsersData();
 
@@ -121,22 +120,20 @@ public class AccountTester {
 		}
 	}
 
-	private static void addUser() {
+	private static void create() {
 		try {
 			System.out.println("PROCESSING TO ADD NEW USER...");
 			AccountTO accountTO = new AccountTO();
-			System.out
-					.print("Full Name:(use '_' underscore instead of spaces)");
+			System.out.print("Full Name:(use '_' underscore instead of spaces)");
 			accountTO.setFullName(input.next());
-			System.out.print("Balance: ");
 			System.out.print("Username:");
 			accountTO.setUserName(input.next());
 			System.out.print("Password:");
 			accountTO.setPassword(input.next());
+			System.out.print("Balance: ");
 			accountTO.setAmount(input.nextDouble());
 			// AccountManager manager = new AccountManager();
-			LinkedHashMap<String, String> usersFullNames = manager
-					.addUser(accountTO);
+			LinkedHashMap<String, String> usersFullNames = manager.create(accountTO);
 			System.out.println(usersFullNames.values());
 			// getAllUsersData();
 
