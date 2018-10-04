@@ -48,6 +48,7 @@ public class SQLiteCRUD {
 					+ " fullName           CHAR(50)    NOT NULL, "
 					+ " username        TEXT     NOT NULL, "
 					+ " password        TEXT     NOT NULL, "
+					+ " balance        NUMBER     NOT NULL, "
 					+ " createdDate     datetime)";
 			stmt.executeUpdate(sql);
 			sql = "CREATE TABLE IF NOT EXISTS web_blog "
