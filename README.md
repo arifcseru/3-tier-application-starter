@@ -1,2 +1,2 @@
-# 3tierJavaConsole
-JEE - Basic Three Tier Java Console Application
+# 3-tier-java-application
+JPA-HIBERNATE, Oracle,
