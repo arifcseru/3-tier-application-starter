@@ -1,9 +1,9 @@
-package com.infy.presentationtier;
+package app.company.presentationtier;
 
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.infy.businesstier.AccountValidator;
+import app.company.businesstier.AccountValidator;
 
 public class AccountTest {
 	AccountValidator validator = new AccountValidator();

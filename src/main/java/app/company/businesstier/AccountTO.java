@@ -1,4 +1,4 @@
-package com.infy.businesstier;
+package app.company.businesstier;
 
 public class AccountTO {
 	public String userName;

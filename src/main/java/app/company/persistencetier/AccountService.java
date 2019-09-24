@@ -1,4 +1,4 @@
-package com.infy.persistencetier;
+package app.company.persistencetier;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 
-import com.infy.businesstier.AccountTO;
+import app.company.businesstier.AccountTO;
 
 public class AccountService {
 	public static String DATABASE_NAME = "jdbc:sqlite:myBlog.db";

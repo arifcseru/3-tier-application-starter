@@ -13,3 +13,4 @@ java.lang.Exception: Manager.USERNAME_PASSWORD_MISMATCH
 java.lang.Exception: Manager.USERNAME_PASSWORD_MISMATCH
 java.lang.Exception: Manager.USERNAME_PASSWORD_MISMATCH
 java.lang.Exception: Manager.USERNAME_PASSWORD_MISMATCH
+java.lang.Exception: Validator.INVALID_USERNAME

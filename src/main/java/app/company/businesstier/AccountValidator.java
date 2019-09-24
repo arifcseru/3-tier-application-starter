@@ -1,4 +1,4 @@
-package com.infy.businesstier;
+package app.company.businesstier;
 
 public class AccountValidator {
 	public void validate(String userName, String password) throws Exception {

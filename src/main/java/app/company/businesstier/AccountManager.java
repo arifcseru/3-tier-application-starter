@@ -1,11 +1,11 @@
-package com.infy.businesstier;
+package app.company.businesstier;
 
 import java.util.LinkedHashMap;
 import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import com.infy.persistencetier.AccountService;
+import app.company.persistencetier.AccountService;
 
 public class AccountManager {
 	AccountValidator validator = new AccountValidator();

@@ -1,12 +1,12 @@
-package com.infy.presentationtier;
+package app.company.presentationtier;
 
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Scanner;
 
-import com.infy.businesstier.AccountManager;
-import com.infy.businesstier.AccountTO;
-import utility.AppConfig;
+import app.company.businesstier.AccountManager;
+import app.company.businesstier.AccountTO;
+import app.company.utility.AppConfig;
 
 public class AccountTester {
 	public static AccountManager manager = new AccountManager();

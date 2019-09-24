@@ -1,4 +1,4 @@
-package utility;
+package app.company.utility;
 
 import java.io.InputStream;
 import java.util.Properties;
@@ -11,7 +11,7 @@ public class AppConfig {
 	static{
 		try {
 			ClassLoader cl = Thread.currentThread().getContextClassLoader();
-			inputStream = cl.getResourceAsStream("properties/configuration.properties");
+			inputStream = cl.getResourceAsStream("configuration.properties");
 			
 		}catch(Exception e){
 			Logger logger = Logger.getLogger(AppConfig.class);

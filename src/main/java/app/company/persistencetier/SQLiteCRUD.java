@@ -1,4 +1,4 @@
-package com.infy.persistencetier;
+package app.company.persistencetier;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
